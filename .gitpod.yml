@@ -1,1 +1,2 @@
-image: eulertour/manim
+image:
+  -file: Dockerfile
