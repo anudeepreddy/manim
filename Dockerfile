@@ -1,7 +1,7 @@
 FROM gitpod/workspace-full-vnc
-RUN add-apt-repository ppa:videolan/stable-daily \
-    && apt-get update \
-    && apt-get install -qqy --no-install-recommends \
+RUN sudo add-apt-repository ppa:videolan/stable-daily \
+    && sudo apt-get update \
+    && sudo apt-get install -qqy --no-install-recommends \
         apt-utils \
         ffmpeg \
         sox \
@@ -13,7 +13,7 @@ RUN add-apt-repository ppa:videolan/stable-daily \
         texlive-science \
         tipa \
         vls \
-    && rm -rf /var/lib/apt/lists/*
+    && sudo rm -rf /var/lib/apt/lists/*
 COPY . /manim
 RUN cd /manim \
     && python3 setup.py sdist \
