@@ -1,5 +1,6 @@
-FROM python:3.7
-RUN apt-get update \
+FROM gitpod/workspace-full-vnc
+RUN add-apt-repository ppa:videolan/stable-daily \
+    && apt-get update \
     && apt-get install -qqy --no-install-recommends \
         apt-utils \
         ffmpeg \
@@ -11,9 +12,10 @@ RUN apt-get update \
         texlive-latex-recommended \
         texlive-science \
         tipa \
+        vls \
     && rm -rf /var/lib/apt/lists/*
 COPY . /manim
 RUN cd /manim \
-    && python setup.py sdist \
-    && python -m pip install dist/manimlib*
-ENTRYPOINT ["/bin/bash"]
+    && python3 setup.py sdist \
+    && python3 -m pip install dist/manimlib*
+
